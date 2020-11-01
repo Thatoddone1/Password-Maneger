@@ -18,33 +18,35 @@ while True:
             wantUpper = input('Do you want upper case lestters in the password(s) (y/n)')
             wantNum = input('Do you want numbers in the password(s) (y/n)')
             wantPunc = input('Do you want punctuation in the password(s (y/n))')
+            webName = input('What would you like to name the set: ')
+            Username = input('What is the user name for the set: ')
+            
+            
+            f = open('passwords.txt', 'a')
+            f.write(webName + '; ' + Username + '; ')
 
             i = 0
             c = random.randint(1,4)
             Password = ''
             while i < int(length):
                 if c == 1 and wantLower == 'y':
-                    Password + random.choice(string.ascii_lowercase)
+                    f.write(random.choice(string.ascii_lowercase))
                     i = i+1
                 elif c == 2 and wantNum == 'y':
-                    print(random.randint(1,9), end='')
+                    f.write(random.choice(['1', '2', '3', '4', '4', '5', '6', '7', '8', '9' ]))
                     i = i+1
                 elif c == 3 and wantUpper == 'y':
-                    print(random.choice(string.ascii_uppercase), end='')
+                    f.write(random.choice(string.ascii_uppercase))
                     i = i+1
                 elif c == 4 and wantPunc == 'y':
-                    print(random.choice(string.punctuation), end='')
+                    f.write(random.choice(string.punctuation))
                     i = i+1
                 elif wantPunc == 'n' or wantNum == 'n' or wantUpper == 'n' or wantLower == 'n':
                     pass
                 else:
                     print('error invalid value')
                 c = random.randint(1,4)
-            
-            webName = input('What would you like to name the set: ')
-            Username = input('What is the user name for the set: ')
-            f = open('passwords.txt', 'a')
-            f.write(webName + '; ' + Username + '; ' + Password + ',')
+            f.write(',')
             f.write('\n')
             f.close()
         else:
