@@ -14,10 +14,10 @@ while True:
         if randomPass == 'y':
 
             length = input('Enter The Length Of the Password(s): ')
-            wantLower = input('Do you want lower case letters in the password(s) (y/n)')
-            wantUpper = input('Do you want upper case lestters in the password(s) (y/n)')
-            wantNum = input('Do you want numbers in the password(s) (y/n)')
-            wantPunc = input('Do you want punctuation in the password(s (y/n))')
+            wantLower = input('Do you want lower case letters in the password(s) (y/n): ')
+            wantUpper = input('Do you want upper case lestters in the password(s) (y/n): ')
+            wantNum = input('Do you want numbers in the password(s) (y/n): ')
+            wantPunc = input('Do you want punctuation in the password(s (y/n): ')
             webName = input('What would you like to name the set: ')
             Username = input('What is the user name for the set: ')
             
@@ -35,22 +35,31 @@ while True:
             Password = ''
             while i < int(length):
                 if c == 1 and wantLower == 'y':
-                    f.write(random.choice(string.ascii_lowercase))
+                    randomval = (random.choice(string.ascii_lowercase))
+                    f.write(randomval)
+                    print(randomval, end='')
                     i = i+1
                 elif c == 2 and wantNum == 'y':
-                    f.write(random.choice(['1', '2', '3', '4', '4', '5', '6', '7', '8', '9' ]))
+                    randomcal = (random.choice(['1', '2', '3', '4', '4', '5', '6', '7', '8', '9' ]))
+                    f.write(randomcal)
+                    print(randomcal, end='')
                     i = i+1
                 elif c == 3 and wantUpper == 'y':
-                    f.write(random.choice(string.ascii_uppercase))
+                    randomval = (random.choice(string.ascii_uppercase))
+                    f.write(randomval)
+                    print(randomval, end='')
                     i = i+1
                 elif c == 4 and wantPunc == 'y':
-                    f.write(random.choice(string.punctuation))
+                    randomval = (random.choice(string.punctuation))
+                    f.write(randomval)
+                    print(randomval, end='')
                     i = i+1
                 elif wantPunc == 'n' or wantNum == 'n' or wantUpper == 'n' or wantLower == 'n':
                     pass
                 else:
                     print('error invalid value')
                 c = random.randint(1,4)
+            print(' Is your Password')
             f.write(',')
             f.write('\n')
             f.close()
