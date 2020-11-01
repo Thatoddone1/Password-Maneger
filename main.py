@@ -4,9 +4,11 @@ import string
 
 while True:
     def seeSets():
-        f = open('passwords.txt', 'r')
-        passwords = f.read()
-        print(passwords)
+        if os.path.exists('passwords.txt'):
+            f = open('passwords.txt', 'r')
+            print(f.read())
+        else:
+            print("You have not made any sets yet try makeing one by typeing 's'")
 
 
     def addSet():
