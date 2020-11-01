@@ -21,6 +21,11 @@ while True:
             webName = input('What would you like to name the set: ')
             Username = input('What is the user name for the set: ')
             
+
+
+            if wantLower == 'n' and wantUpper == 'n' and wantNum == 'n' and wantPunc == 'n':
+                print('Cant have all digets and charecters set to no')
+                addSet()
             
             f = open('passwords.txt', 'a')
             f.write(webName + '; ' + Username + '; ')
@@ -49,7 +54,7 @@ while True:
             f.write(',')
             f.write('\n')
             f.close()
-        else:
+        elif randomPass == 'n':
             webName = input('What would you like to name the set: ')
             Username = input('What is the user name for the set: ')
             Password = input('What is the password for this set: ')
@@ -57,6 +62,10 @@ while True:
             f.write(webName + '; ' + Username + '; ' + Password + ',')
             f.write('\n')
             f.close()
+        elif randomPass == 'q':
+            pass
+        else:
+            print('Error')
 
 
 
