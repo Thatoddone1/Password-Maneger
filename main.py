@@ -9,7 +9,7 @@ while True:
             f = open('passwords.txt', 'r')
             print(f.read())
         else:
-            print("You have not made any sets yet try makeing one by typeing 's'")
+            print("You have not made any sets yet try makeing one by typeing 'a'")
 
 
     def addSet():
