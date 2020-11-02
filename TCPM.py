@@ -1,17 +1,64 @@
+import sys
+import linecache
 import os
 import random
 import string
+import socket
+hostname = socket.gethostname()
+platform = sys.platform
+
+if os.path.exists('passwords.txt'):
+    f = open('passwords.txt')
+    passtxt = f.readlines()
+    if passtxt[0][:-1] == 'nolock' or passtxt[2][:-1] == 'nolock':
+        pass
+    elif passtxt[0][:-1] == hostname and passtxt[2][:-1] == platform: 
+        print('Logged in as ' + passtxt[1])
+        f.close()
+    else:
+        print('error hostname not valid')
+        f.close()
+        quit()
+else:
+    print('New User? if so welcome')
+    username = input('What would you like your username to be: ')
+    wantHostPro = input('Do you want Host Protection (stops this program from running on other computers when your set is loaded) (y/n): ')
+    if wantHostPro == 'y':
+        f = open('passwords.txt', 'w')
+        f.write(hostname + '\n' + username + '\n' + platform + '\n')
+        f.close()
+    else:
+        f = open('passwords.txt', 'w')
+        f.write('nolock\n' + username)
+
 
 
 
 while True:
     def seeSets():
+        hostname = socket.gethostname()
+        platform = sys.platform
         print('\n')
         if os.path.exists('passwords.txt'):
-            f = open('passwords.txt', 'r')
-            print(f.read())
+            f = open('passwords.txt')
+            passtxt = f.readlines()
+            if passtxt[0][:-1] == 'nolock' or passtxt[2][:-1] == 'nolock':
+                f.close()
+                f = open('passwords.txt', 'r')
+                print(f.read())
+            elif passtxt[0][:-1] == hostname and passtxt[2][:-1] == platform: 
+                f.close()
+                f = open('passwords.txt', 'r')
+                passwordtxtseesets = f.readlines()
+                print(passwordtxtseesets[3:])                
+
+            else:
+                print('error hostname not valid')
+                f.close()
+                quit()
         else:
             print("You have not made any sets yet try makeing one by typeing 'a'")
+
 
 
     def addSet():
@@ -104,10 +151,3 @@ while True:
             print('Ok Done')
         else:
             print('Error')
-
-
-
-
-
-
-
